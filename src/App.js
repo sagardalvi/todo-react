@@ -32,7 +32,7 @@ class App extends Component {
           <button onClick={sagaHelpersExampleActions.getUsersT}>throttle</button>
         </fieldset>
         <fieldset>
-          <legend>Saga Effects - Fork & Spawn</legend>
+          <legend>Saga Effects - Fork  Spawn</legend>
           <button onClick={forkSpawnExampleActions.runForkExample}>Fork Example</button>
           <button onClick={forkSpawnExampleActions.runSpawnExample}>Spawn Example</button>
         </fieldset>

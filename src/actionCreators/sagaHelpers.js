@@ -19,3 +19,12 @@ export function getUsersSuccess(users) {
 export function getUsersError(error) {
   return {type: actionTypes.ERROR, error}
 }
+
+export function getCategories() {
+  return {type: actionTypes.GET_CATEGORY}
+}
+
+export function getCategoriesResponse(resp) {
+    return {type: actionTypes.GET_CATEGORY_RESPONSE, resp }
+}
+

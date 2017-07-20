@@ -1,17 +1,8 @@
 import {combineReducers} from 'redux'
-import sagaHelpersReducer from "./sagaHelpers";
-import forkSpawnExampleReducer from './forkSpwanExample';
-import nonBlockingCallsExampleReducer from './nonBlockingCalls';
-import blockingCallsExampleReducer from './blockingCalls';
-import parallelCallsExampleReducer from './parallel';
-
+import toDoReducer from "./toDoReducer";
 
 const reducer = combineReducers({
-  sagaHelpersExample: sagaHelpersReducer,
-  forkSpawnExample: forkSpawnExampleReducer,
-  nonBlockingCallsExample: nonBlockingCallsExampleReducer,
-  blockingCallsExample: blockingCallsExampleReducer,
-  parallelCallsExample: parallelCallsExampleReducer,
+  toDoReducer: toDoReducer
 });
 
 

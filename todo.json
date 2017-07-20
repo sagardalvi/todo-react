@@ -1,0 +1,30 @@
+{
+  "category": [
+    {
+      "key": 1,
+      "value": "Personal"
+    },
+    {
+      "key": 2,
+      "value": "Work"
+    },
+    {
+      "key": 3,
+      "value": "Urgent"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "desc": "TODO Assignment",
+      "due": "07/24/2017",
+      "category": 2
+    },
+    {
+      "id": 2,
+      "desc": "Learn React",
+      "due": "08/15/2017",
+      "category": 1
+    }
+  ]
+}
