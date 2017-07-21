@@ -13,8 +13,28 @@ function* getCategories() {
   }
 }
 
+function* getAllTasks() {
+    try {
+        let tasks = yield call(() => fetch(url.GET_TASKS_URL).then(response => response.json()));
+        let categories = yield call(() => fetch(url.GET_CATEGORY_URL).then(response => response.json()));
+
+        if(tasks){
+            tasks.map((task) => {
+                let currentTask = task;
+                currentTask.category = categories.find(x => x.key === currentTask.category).value;
+                return currentTask;
+            })
+        }
+
+        yield put(actionCreators.getAllTasksResponse(tasks))
+    } catch (error) {
+        yield put(actionCreators.getAllTasksResponse(error))
+    }
+}
+
 export function* sagaHelperMain() {
     yield [
-        takeLatest(actionTypes.GET_CATEGORY, getCategories)
+        takeLatest(actionTypes.GET_CATEGORY, getCategories),
+        takeLatest(actionTypes.GET_TASKS, getAllTasks)
     ]
 }
