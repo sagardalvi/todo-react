@@ -6,8 +6,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import {connect} from 'react-redux';
 
-class Header extends Component {
+const keyMap = {
+    1 : '/',
+    2 : '/create',
+    3 : '/about'
+};
 
+export default class Header extends Component {
+
+
+
+    /*handleSelect(selectedKey) {
+        this.props.router.push(keyMap[selectedKey]);
+    };*/
 
     render() {
 
@@ -20,7 +31,7 @@ class Header extends Component {
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
-                        <Nav>
+                        <Nav >
                             <li><a href="/">List</a></li>
                             <li><a href="/create">Create</a></li>
                         </Nav>
@@ -33,6 +44,7 @@ class Header extends Component {
         );
     }
 }
+/*
 
 function mapStateToProps(state){
     return {
@@ -47,3 +59,4 @@ function mapDispathToProps(dispatch){
 
 
 export default connect(mapStateToProps,mapDispathToProps)(Header);
+*/
