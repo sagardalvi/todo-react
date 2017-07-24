@@ -18,6 +18,14 @@ class ToDoList extends Component {
         }
     }
 
+    handleEditClick (id){
+        this.props.router.push('/edit/'+id);
+    }
+
+    handleRemoveClick (id){
+        console.log('Remove', id);
+    }
+
     render() {
         const {
             toDoState
@@ -31,12 +39,11 @@ class ToDoList extends Component {
                     <th>Category</th>
                     <th>Due Date</th>
                     <th>Status</th>
-                    <th></th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                {toDoState.tasks ? toDoState.tasks.map((row, i)=> <Task key={row.id} task={row}/>) : ""}
+                {toDoState.tasks ? toDoState.tasks.map((row, i)=> <Task key={row.id} task={row} handleEdit={this.handleEditClick.bind(this)} handleRemove={this.handleRemoveClick}/>) : ""}
                 </tbody>
             </Table>
         );

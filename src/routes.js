@@ -5,9 +5,10 @@ import About from './components/about/About';
 import ToDoList from './components/list/ToDoList';
 
 const routes = [
-  <Route path="/" component={ToDoList}></Route>,
-  <Route path="/about" component={About}></Route>,
-  <Route path="/create" component={ToDoForm}></Route>
+  <Route path="/" component={ToDoList}/>,
+  <Route path="/about" component={About}/>,
+  <Route path="/create" component={ToDoForm}/>,
+  <Route path="/edit/:id" component={ToDoForm}/>
 ];
 
 export default routes;

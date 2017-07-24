@@ -1,5 +1,4 @@
-import { takeLatest} from "redux-saga";
-import {call, put} from "redux-saga/effects"
+import {takeLatest, call, put} from "redux-saga/effects"
 import * as actionTypes from '../actionTypes/sagaHelpers'
 import * as actionCreators from '../actionCreators/sagaHelpers';
 import * as url from './apiUrl';
@@ -11,6 +10,15 @@ function* getCategories() {
   } catch (error) {
     yield put(actionCreators.getCategoriesResponse(error))
   }
+}
+
+function* getTask(action) {
+    try {
+        let task = yield call(() => fetch(url.GET_TASK_URL(action.id)).then(response => response.json()));
+        yield put(actionCreators.getTaskResponse(task))
+    } catch (error) {
+        yield put(actionCreators.getTaskResponse(error))
+    }
 }
 
 function* getAllTasks() {
@@ -35,6 +43,7 @@ function* getAllTasks() {
 export function* sagaHelperMain() {
     yield [
         takeLatest(actionTypes.GET_CATEGORY, getCategories),
-        takeLatest(actionTypes.GET_TASKS, getAllTasks)
+        takeLatest(actionTypes.GET_TASKS, getAllTasks),
+        takeLatest(actionTypes.GET_TASK, getTask)
     ]
 }

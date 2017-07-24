@@ -16,3 +16,11 @@ export function getAllTasks() {
 export function getAllTasksResponse(resp) {
     return {type: actionTypes.GET_TASKS_RESPONSE, resp }
 }
+
+export function getTask(id) {
+    return {type: actionTypes.GET_TASK, id:id}
+}
+
+export function getTaskResponse(resp) {
+    return {type: actionTypes.GET_TASK_RESPONSE, resp }
+}

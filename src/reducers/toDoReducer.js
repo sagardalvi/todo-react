@@ -10,6 +10,10 @@ export default (prevState = {}, action={}) => {
       return Object.assign({}, prevState, {isFetching: true});
     case actionTypes.GET_TASKS_RESPONSE:
       return Object.assign({}, prevState, {isFetching: false}, {tasks: action.resp});
+    case actionTypes.GET_TASK:
+      return Object.assign({}, prevState, {isFetching: true});
+    case actionTypes.GET_TASK_RESPONSE:
+      return Object.assign({}, prevState, {isFetching: false}, {task: action.resp});
     default:
       return prevState;
   }

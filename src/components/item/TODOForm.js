@@ -24,6 +24,9 @@ class ToDoForm extends Component {
         if (!this.props.toDoState.categories) {
             this.props.sagaHelpersActions.getCategories();
         }
+        if (this.props.params.id && !this.props.toDoState.task) {
+            this.props.sagaHelpersActions.getTask(this.props.params.id);
+        }
     }
 
     render() {
@@ -40,24 +43,27 @@ class ToDoForm extends Component {
                         type="text"
                         label="Description"
                         placeholder="Enter Description"
+                        value = {toDoState.task ? toDoState.task.desc : ''}
                         />
                     <FormGroup>
                         <ControlLabel>Due Date</ControlLabel>
-                        <DatePicker id="example-datepicker"/>
+                        <DatePicker id="example-datepicker"
+                                    dateFormat="DD-MM-YYYY"
+                                    value ={toDoState.task ?  toDoState.task.due : ''}/>
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Category</ControlLabel>
-                        <FormControl componentClass="select" placeholder="Select Category">
+                        <FormControl componentClass="select" placeholder="Select Category" value={toDoState.task ?  toDoState.task.category : ''}>
                             <option value="select">Select</option>
                             {toDoState.categories ? toDoState.categories.map((repo,i)=> (<option key={i}  value={repo.key}>{repo.value}</option>)) : ""}
                         </FormControl>
                     </FormGroup>
-                    <Checkbox>
+                    <Checkbox checked={toDoState.task && toDoState.task.completed ?  true : false}>
                         Task completed
                     </Checkbox>
                     <ButtonToolbar>
                         <Button bsStyle="primary">Save</Button>
-                        <Button>Cancel</Button>
+                        <Button onClick={()=>this.props.router.push('/')}>Cancel</Button>
                     </ButtonToolbar>
                 </form>
             </div>

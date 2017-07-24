@@ -17,14 +17,14 @@
     {
       "id": 1,
       "desc": "TODO Assignment",
-      "due": "07/24/2017",
+      "due": "2017-07-24",
       "category": 2,
       "completed":false
     },
     {
       "id": 2,
       "desc": "Learn React",
-      "due": "08/15/2017",
+      "due": "2017-08-15",
       "category": 1,
       "completed":false
     }
