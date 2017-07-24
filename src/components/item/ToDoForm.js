@@ -43,17 +43,17 @@ class ToDoForm extends Component {
                         type="text"
                         label="Description"
                         placeholder="Enter Description"
-                        value = {toDoState.task ? toDoState.task.desc : ''}
+                        defaultValue = {toDoState.task ? toDoState.task.desc : ''}
                         />
                     <FormGroup>
                         <ControlLabel>Due Date</ControlLabel>
                         <DatePicker id="example-datepicker"
                                     dateFormat="DD-MM-YYYY"
-                                    value ={toDoState.task ?  toDoState.task.due : ''}/>
+                                    defaultValue ={toDoState.task ?  toDoState.task.due : ''}/>
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Category</ControlLabel>
-                        <FormControl componentClass="select" placeholder="Select Category" value={toDoState.task ?  toDoState.task.category : ''}>
+                        <FormControl componentClass="select" placeholder="Select Category" defaultValue={toDoState.task ?  toDoState.task.category : ''}>
                             <option value="select">Select</option>
                             {toDoState.categories ? toDoState.categories.map((repo,i)=> (<option key={i}  value={repo.key}>{repo.value}</option>)) : ""}
                         </FormControl>

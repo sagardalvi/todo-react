@@ -16,9 +16,9 @@ export default class Header extends Component {
 
 
 
-    /*handleSelect(selectedKey) {
+    handleSelect(selectedKey) {
         this.props.router.push(keyMap[selectedKey]);
-    };*/
+    };
 
     render() {
 
@@ -31,12 +31,12 @@ export default class Header extends Component {
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
-                        <Nav >
-                            <li><a href="/">List</a></li>
-                            <li><a href="/create">Create</a></li>
+                        <Nav onSelect={this.handleSelect.bind(this)}>
+                            <NavItem href="#" eventKey={1}>List</NavItem>
+                            <NavItem href="#" eventKey={2}>Create/Edit</NavItem>
                         </Nav>
-                        <Nav pullRight>
-                            <li><a href="/about">About</a></li>
+                        <Nav pullRight onSelect={this.handleSelect.bind(this)}>
+                            <NavItem href="#" eventKey={3}>About</NavItem>
                             <NavItem href="#"></NavItem>
                         </Nav>
                     </Navbar.Collapse>

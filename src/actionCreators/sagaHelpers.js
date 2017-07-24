@@ -21,6 +21,10 @@ export function getTask(id) {
     return {type: actionTypes.GET_TASK, id:id}
 }
 
+export function getNewTask() {
+    return {type: actionTypes.GET_NEW_TASK}
+}
+
 export function getTaskResponse(resp) {
     return {type: actionTypes.GET_TASK_RESPONSE, resp }
 }
