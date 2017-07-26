@@ -18,13 +18,29 @@ export function getAllTasksResponse(resp) {
 }
 
 export function getTask(id) {
-    return {type: actionTypes.GET_TASK, id:id}
+    return {type: actionTypes.GET_TASK, id}; // same as {type: actionTypes.GET_TASK, id:id}
+}
+
+export function deleteTask(id) {
+    return {type: actionTypes.DELETE_TASK, id};
 }
 
 export function getNewTask() {
     return {type: actionTypes.GET_NEW_TASK}
 }
 
+export function createNewTask(task) {
+    return {type: actionTypes.CREATE_TASK, task}
+}
+
 export function getTaskResponse(resp) {
     return {type: actionTypes.GET_TASK_RESPONSE, resp }
+}
+
+export function getDeleteTaskResponse(resp) {
+    return {type: actionTypes.DELETE_TASK_RESPONSE, resp }
+}
+
+export function getCreateTaskResponse(resp) {
+    return {type: actionTypes.CREATE_TASK_RESPONSE, resp }
 }

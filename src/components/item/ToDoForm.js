@@ -29,6 +29,17 @@ class ToDoForm extends Component {
         }
     }
 
+
+    createNewTask() {
+        var newTask = {
+            desc: this.desc.value,
+            due: this.refs.dueDate.getValue(),
+            category: parseInt(this.category.value),
+            completed: false
+        };
+        this.props.sagaHelpersActions.createNewTask(newTask);
+    }
+
     render() {
 
         const {
@@ -42,27 +53,36 @@ class ToDoForm extends Component {
                         id="formControlsText"
                         type="text"
                         label="Description"
+                        inputRef={(ref) => {this.desc = ref}}
                         placeholder="Enter Description"
-                        defaultValue = {toDoState.task ? toDoState.task.desc : ''}
+                        //value = {toDoState.task ? toDoState.task.desc : undefined}
                         />
                     <FormGroup>
                         <ControlLabel>Due Date</ControlLabel>
                         <DatePicker id="example-datepicker"
                                     dateFormat="DD-MM-YYYY"
-                                    defaultValue ={toDoState.task ?  toDoState.task.due : ''}/>
+                                    ref="dueDate"
+                            //value ={toDoState.task ?  toDoState.task.due : undefined}
+                            />
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Category</ControlLabel>
-                        <FormControl componentClass="select" placeholder="Select Category" defaultValue={toDoState.task ?  toDoState.task.category : ''}>
+                        <FormControl componentClass="select" placeholder="Select Category"
+                                     inputRef={(ref) => {this.category = ref}}
+                            //value={toDoState.task ?  toDoState.task.category : undefined}
+                            >
                             <option value="select">Select</option>
-                            {toDoState.categories ? toDoState.categories.map((repo,i)=> (<option key={i}  value={repo.key}>{repo.value}</option>)) : ""}
+                            {toDoState.categories ? toDoState.categories.map((repo, i)=> (
+                                <option key={i} value={repo.id}>{repo.value}</option>)) : ""}
                         </FormControl>
                     </FormGroup>
-                    <Checkbox checked={toDoState.task && toDoState.task.completed ?  true : false}>
+                    <Checkbox
+                        //checked={toDoState.task && toDoState.task.completed ?  true : false}
+                        ref="status">
                         Task completed
                     </Checkbox>
                     <ButtonToolbar>
-                        <Button bsStyle="primary">Save</Button>
+                        <Button bsStyle="primary" onClick={this.createNewTask.bind(this)}>Save</Button>
                         <Button onClick={()=>this.props.router.push('/')}>Cancel</Button>
                     </ButtonToolbar>
                 </form>
