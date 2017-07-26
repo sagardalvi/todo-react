@@ -40,6 +40,12 @@ class ToDoForm extends Component {
         this.props.sagaHelpersActions.createNewTask(newTask);
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.toDoState.showlist){
+            nextProps.router.push('/');
+        }
+    }
+
     render() {
 
         const {

@@ -12,8 +12,11 @@ import Task from './Task';
 class ToDoList extends Component {
 
 
-    componentDidMount() {
-        this.props.sagaHelpersActions.getAllTasks();
+    componentWillMount() {
+        if(!this.props.toDoState.tasks || this.props.toDoState.showlist ){
+            this.props.sagaHelpersActions.getAllTasks();
+            return false;
+        }
     }
 
     handleEditClick(id) {
@@ -24,13 +27,11 @@ class ToDoList extends Component {
         this.props.sagaHelpersActions.deleteTask(id);
     }
 
-    /*shouldComponentUpdate() {
-        if(this.props.toDoState.showlist){
+    componentWillReceiveProps(nextProps){
+        if(nextProps.toDoState.showlist){
             this.props.sagaHelpersActions.getAllTasks();
-            return false;
         }
-        return true;
-    }*/
+    }
 
     render() {
         const {

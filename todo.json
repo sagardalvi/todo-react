@@ -29,20 +29,6 @@
       "completed": false
     },
     {
-      "desc": "Task3",
-      "due": "2017-07-21T06:30:00.000Z",
-      "category": 3,
-      "completed": false,
-      "id": 3
-    },
-    {
-      "desc": "Task4",
-      "due": "2017-07-19T06:30:00.000Z",
-      "category": 2,
-      "completed": false,
-      "id": 4
-    },
-    {
       "desc": "Task5",
       "due": "2017-07-12T06:30:00.000Z",
       "category": 2,
@@ -50,25 +36,18 @@
       "id": 5
     },
     {
-      "desc": "Task6",
-      "due": "2017-07-22T06:30:00.000Z",
-      "category": 2,
-      "completed": false,
-      "id": 6
-    },
-    {
-      "desc": "Task5",
-      "due": "2017-07-21T06:30:00.000Z",
-      "category": 2,
-      "completed": false,
-      "id": 7
-    },
-    {
-      "desc": "Task9",
-      "due": "2017-07-01T06:30:00.000Z",
-      "category": 2,
+      "desc": "Task8",
+      "due": "2017-07-09T06:30:00.000Z",
+      "category": 3,
       "completed": false,
       "id": 8
+    },
+    {
+      "desc": "Task13",
+      "due": "2017-07-03T06:30:00.000Z",
+      "category": 1,
+      "completed": false,
+      "id": 9
     }
   ]
 }

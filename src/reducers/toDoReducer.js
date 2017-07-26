@@ -9,9 +9,10 @@ export default (prevState = {}, action = {}) => {
             return Object.assign({}, prevState, {isFetching: false}, {categories: action.resp});
 
         case actionTypes.GET_TASKS:
-            return Object.assign({}, prevState, {isFetching: true});
+            return Object.assign({}, prevState, {isFetching: true, showlist: false});
 
         case actionTypes.GET_TASKS_RESPONSE:
+
             return Object.assign({}, prevState, {isFetching: false}, {
                 tasks: action.resp,
                 task: undefined,
@@ -34,7 +35,7 @@ export default (prevState = {}, action = {}) => {
             return Object.assign({}, prevState, {isFetching: true});
 
         case actionTypes.DELETE_TASK_RESPONSE:
-            return Object.assign({}, prevState, {isFetching: false}, {delresp: action.resp, showlist: true});
+            return Object.assign({}, prevState, {isFetching: false}, {showlist: true});
         default:
             return prevState;
     }
