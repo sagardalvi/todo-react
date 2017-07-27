@@ -26,21 +26,30 @@ export function deleteTask(id) {
 }
 
 export function getNewTask() {
-    return {type: actionTypes.GET_NEW_TASK}
+    return {type: actionTypes.GET_NEW_TASK};
 }
 
 export function createNewTask(task) {
-    return {type: actionTypes.CREATE_TASK, task}
+    return {type: actionTypes.CREATE_TASK, task};
 }
 
 export function getTaskResponse(resp) {
-    return {type: actionTypes.GET_TASK_RESPONSE, resp }
+    return {type: actionTypes.GET_TASK_RESPONSE, resp };
 }
 
 export function getDeleteTaskResponse(resp) {
-    return {type: actionTypes.DELETE_TASK_RESPONSE, resp }
+    return {type: actionTypes.DELETE_TASK_RESPONSE, resp };
 }
 
 export function getCreateTaskResponse(resp) {
-    return {type: actionTypes.CREATE_TASK_RESPONSE, resp }
+    return {type: actionTypes.CREATE_TASK_RESPONSE, resp };
 }
+
+export function updateTask(id, task) {
+    return {type: actionTypes.UPDATE_TASK, id, task};
+}
+
+export function getUpdateTaskResponse(resp) {
+    return {type: actionTypes.UPDATE_TASK_RESPONSE, resp};
+}
+

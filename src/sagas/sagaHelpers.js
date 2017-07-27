@@ -40,6 +40,21 @@ function* createTask(action) {
                 'Content-Type'  : 'application/json'
             },
             body    : JSON.stringify(action.task)}).then(response => response.json()));
+        yield put(actionCreators.getUpdateTaskResponse(taskresp))
+    } catch (error) {
+        yield put(actionCreators.getUpdateTaskResponse(error))
+    }
+}
+
+function* updateTask(action) {
+    try {
+
+        let taskresp = yield call(() => fetch(url.GET_TASK_URL(action.id), {method:'PUT',
+            headers : {
+                'Accept'        : 'application/json',
+                'Content-Type'  : 'application/json'
+            },
+            body    : JSON.stringify(action.task)}).then(response => response.json()));
         yield put(actionCreators.getCreateTaskResponse(taskresp))
     } catch (error) {
         yield put(actionCreators.getCreateTaskResponse(error))
@@ -71,6 +86,7 @@ export function* sagaHelperMain() {
         takeLatest(actionTypes.GET_TASKS, getAllTasks),
         takeLatest(actionTypes.GET_TASK, getTask),
         takeLatest(actionTypes.CREATE_TASK, createTask),
-        takeLatest(actionTypes.DELETE_TASK, deleteTask)
+        takeLatest(actionTypes.DELETE_TASK, deleteTask),
+        takeLatest(actionTypes.UPDATE_TASK, updateTask)
     ]
 }

@@ -18,9 +18,10 @@ function FieldGroup({ id, label, help, ...props }) {
     );
 }
 
-class ToDoForm extends Component {
+class ToDoEditForm extends Component {
 
-    componentDidMount() {
+    componentWillMount() {
+
         if (!this.props.toDoState.categories) {
             this.props.sagaHelpersActions.getCategories();
         }
@@ -30,20 +31,33 @@ class ToDoForm extends Component {
     }
 
 
-    createNewTask() {
+    updateTask() {
         var newTask = {
             desc: this.desc.value,
             due: this.refs.dueDate.getValue(),
             category: parseInt(this.category.value),
-            completed: false
+            completed: this.status.checked
         };
-        this.props.sagaHelpersActions.createNewTask(newTask);
+        this.props.sagaHelpersActions.updateTask(this.props.toDoState.task.id, newTask);
+    }
+
+    updateField(a,b){
+        console.log(a,b);
+
     }
 
     componentWillReceiveProps(nextProps){
         if(nextProps.toDoState.showlist){
             nextProps.router.push('/');
         }
+        /*if (nextProps.toDoState.task) {
+            this.desc.value = nextProps.toDoState.task.desc;
+            this.category.value = nextProps.toDoState.task.category;
+        }*/
+    }
+
+    componentWillUnmount(){
+        this.props.sagaHelpersActions.getNewTask();
     }
 
     render() {
@@ -51,6 +65,10 @@ class ToDoForm extends Component {
         const {
             toDoState
             }=this.props;
+
+        if(!toDoState.task){
+            return (<div></div>)
+        }
 
         return (
             <div>
@@ -61,29 +79,35 @@ class ToDoForm extends Component {
                         label="Description"
                         inputRef={(ref) => {this.desc = ref}}
                         placeholder="Enter Description"
-                        //value = {toDoState.task ? toDoState.task.desc : undefined}
+                        onChange={this.updateField}
+                        defaultValue ={toDoState.task.desc}
                         />
                     <FormGroup>
                         <ControlLabel>Due Date</ControlLabel>
                         <DatePicker id="example-datepicker"
                                     dateFormat="DD-MM-YYYY"
                                     ref="dueDate"
-                            //value ={toDoState.task ?  toDoState.task.due : undefined}
+                            value ={toDoState.task.due}
                             />
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Category</ControlLabel>
                         <FormControl componentClass="select" placeholder="Select Category"
                                      inputRef={(ref) => {this.category = ref}}
-                            //value={toDoState.task ?  toDoState.task.category : undefined}
+                                     defaultValue ={toDoState.task.category }
                             >
                             <option value="select">Select</option>
                             {toDoState.categories ? toDoState.categories.map((repo, i)=> (
                                 <option key={i} value={repo.id}>{repo.value}</option>)) : ""}
                         </FormControl>
                     </FormGroup>
+                    <Checkbox
+                        defaultChecked={toDoState.task.completed}
+                        inputRef={ref => {this.status = ref }}>
+                        Task completed
+                    </Checkbox>
                     <ButtonToolbar>
-                        <Button bsStyle="primary" onClick={this.createNewTask.bind(this)}>Save</Button>
+                        <Button bsStyle="primary" onClick={this.updateTask.bind(this)}>Save</Button>
                         <Button onClick={()=>this.props.router.push('/')}>Cancel</Button>
                     </ButtonToolbar>
                 </form>
@@ -106,4 +130,4 @@ function mapDispathToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispathToProps)(ToDoForm);
+export default connect(mapStateToProps, mapDispathToProps)(ToDoEditForm);

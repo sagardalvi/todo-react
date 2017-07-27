@@ -36,6 +36,12 @@ export default (prevState = {}, action = {}) => {
 
         case actionTypes.DELETE_TASK_RESPONSE:
             return Object.assign({}, prevState, {isFetching: false}, {showlist: true});
+
+        case actionTypes.UPDATE_TASK:
+            return Object.assign({}, prevState, {isFetching: true});
+
+        case actionTypes.UPDATE_TASK_RESPONSE:
+            return Object.assign({}, prevState, {isFetching: false}, {showlist: true});
         default:
             return prevState;
     }
