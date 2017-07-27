@@ -12,18 +12,25 @@ import Task from './Task';
 class ToDoList extends Component {
 
 
-    componentDidMount() {
-        if (!this.props.toDoState.tasks) {
+    componentWillMount() {
+        if(!this.props.toDoState.tasks || this.props.toDoState.showlist ){
             this.props.sagaHelpersActions.getAllTasks();
+            return false;
         }
     }
 
-    handleEditClick (id){
-        this.props.router.push('/edit/'+id);
+    handleEditClick(id) {
+        this.props.router.push('/edit/' + id);
     }
 
-    handleRemoveClick (id){
-        console.log('Remove', id);
+    handleRemoveClick(id) {
+        this.props.sagaHelpersActions.deleteTask(id);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.toDoState.showlist){
+            this.props.sagaHelpersActions.getAllTasks();
+        }
     }
 
     render() {
@@ -43,7 +50,9 @@ class ToDoList extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                {toDoState.tasks ? toDoState.tasks.map((row, i)=> <Task key={row.id} task={row} handleEdit={this.handleEditClick.bind(this)} handleRemove={this.handleRemoveClick}/>) : ""}
+                {toDoState.tasks ? toDoState.tasks.map((row, i)=> <Task key={row.id} task={row}
+                                                                        handleEdit={this.handleEditClick.bind(this)}
+                                                                        handleRemove={this.handleRemoveClick.bind(this)}/>) : ""}
                 </tbody>
             </Table>
         );

@@ -21,7 +21,7 @@ export default class Task extends PureComponent {
             <tr>
                 <td>{task.desc}</td>
                 <td>{task.category}</td>
-                <td>{task.due}</td>
+                <td>{task.due.split('T')[0]}</td>
                 <td>{task.completed ? 'Done' : 'Pending'}</td>
                 <td>
                     <OverlayTrigger placement="bottom" overlay={tooltip('Edit', 1)}>
