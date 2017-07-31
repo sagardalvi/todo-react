@@ -3,7 +3,7 @@
  */
 import React, {PureComponent} from 'react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default  class About extends PureComponent {
 
