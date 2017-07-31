@@ -2,7 +2,7 @@
  * Created by sagardalvi on 14/07/17.
  */
 import React, {Component} from 'react';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, Checkbox, ButtonToolbar, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, ButtonToolbar, Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import DatePicker from 'react-bootstrap-date-picker';
 import {bindActionCreators} from 'redux';
@@ -34,7 +34,7 @@ class ToDoForm extends Component {
         var newTask = {
             desc: this.desc.value,
             due: this.refs.dueDate.getValue(),
-            category: parseInt(this.category.value),
+            category: parseInt(this.category.value, 10),
             completed: false
         };
         this.props.sagaHelpersActions.createNewTask(newTask);

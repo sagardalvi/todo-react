@@ -35,7 +35,7 @@ class ToDoEditForm extends Component {
         var newTask = {
             desc: this.desc.value,
             due: this.refs.dueDate.getValue(),
-            category: parseInt(this.category.value),
+            category: parseInt(this.category.value, 10),
             completed: this.status.checked
         };
         this.props.sagaHelpersActions.updateTask(this.props.toDoState.task.id, newTask);
@@ -80,21 +80,21 @@ class ToDoEditForm extends Component {
                         inputRef={(ref) => {this.desc = ref}}
                         placeholder="Enter Description"
                         onChange={this.updateField}
-                        defaultValue ={toDoState.task.desc}
+                        defaultValue={toDoState.task.desc}
                         />
                     <FormGroup>
                         <ControlLabel>Due Date</ControlLabel>
                         <DatePicker id="example-datepicker"
                                     dateFormat="DD-MM-YYYY"
                                     ref="dueDate"
-                            value ={toDoState.task.due}
+                            value={toDoState.task.due}
                             />
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Category</ControlLabel>
                         <FormControl componentClass="select" placeholder="Select Category"
                                      inputRef={(ref) => {this.category = ref}}
-                                     defaultValue ={toDoState.task.category }
+                                     defaultValue={toDoState.task.category }
                             >
                             <option value="select">Select</option>
                             {toDoState.categories ? toDoState.categories.map((repo, i)=> (

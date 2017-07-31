@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 
 const keyMap = {
     1 : '/',
