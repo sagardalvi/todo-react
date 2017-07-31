@@ -3,7 +3,7 @@
  */
 import React, {PureComponent} from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 
 export default class ConfirmationPopup extends PureComponent {
 
