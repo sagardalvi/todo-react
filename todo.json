@@ -22,18 +22,18 @@
       "completed": false
     },
     {
-      "desc": "Learn React-Redux-Thunk",
-      "due": "2017-08-15T12:00:00.000Z",
-      "category": 1,
-      "completed": true,
-      "id": 2
-    },
-    {
       "desc": "Learn React - Redux",
       "due": "2017-08-15T12:00:00.000Z",
       "category": 1,
-      "completed": false,
+      "completed": true,
       "id": 5
+    },
+    {
+      "desc": "Learn React - Redux -Saga",
+      "due": "2017-07-28T12:00:00.000Z",
+      "category": 1,
+      "completed": true,
+      "id": 6
     }
   ]
 }

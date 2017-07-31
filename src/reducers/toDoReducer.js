@@ -9,7 +9,7 @@ export default (prevState = {}, action = {}) => {
             return Object.assign({}, prevState, {isFetching: false}, {categories: action.resp});
 
         case actionTypes.GET_TASKS:
-            return Object.assign({}, prevState, {isFetching: true, showlist: false});
+            return Object.assign({}, prevState, {isFetching: true, showlist: false, showPopup:false});
 
         case actionTypes.GET_TASKS_RESPONSE:
 
@@ -32,7 +32,7 @@ export default (prevState = {}, action = {}) => {
         case actionTypes.CREATE_TASK_RESPONSE:
             return Object.assign({}, prevState, {isFetching: false}, {showlist: true});
         case actionTypes.DELETE_TASK:
-            return Object.assign({}, prevState, {isFetching: true});
+            return Object.assign({}, prevState, {isFetching: true,  showPopup:false});
 
         case actionTypes.DELETE_TASK_RESPONSE:
             return Object.assign({}, prevState, {isFetching: false}, {showlist: true});
@@ -42,6 +42,12 @@ export default (prevState = {}, action = {}) => {
 
         case actionTypes.UPDATE_TASK_RESPONSE:
             return Object.assign({}, prevState, {isFetching: false}, {showlist: true});
+
+        case actionTypes.CONFIRMATION_POPUP_CLOSE:
+            return Object.assign({}, prevState, {showPopup: false});
+
+        case actionTypes.CONFIRMATION_POPUP:
+            return Object.assign({}, prevState, {message: action.popup.message, showPopup:true, popupParams:action.popup.params});
         default:
             return prevState;
     }
