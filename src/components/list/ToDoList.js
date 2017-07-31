@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import * as sagaHelpersActionCreators from '../../actionCreators/sagaHelpers'
 import {bindActionCreators} from 'redux';
 import Task from './Task';
+import ConfirmationPopup from '../common/ConfirmationPopup';
 
 
 class ToDoList extends Component {
@@ -24,7 +25,16 @@ class ToDoList extends Component {
     }
 
     handleRemoveClick(id) {
-        this.props.sagaHelpersActions.deleteTask(id);
+        //this.props.sagaHelpersActions.deleteTask(id);
+        this.props.sagaHelpersActions.confirmationPopup('Do you want to delete task?', id);
+    }
+
+    handleDeleteOk(popupParams){
+        this.props.sagaHelpersActions.deleteTask(popupParams);
+    }
+
+    handleDeleteCancel(popupParams){
+        this.props.sagaHelpersActions.confirmationPopupClose();
     }
 
     componentWillReceiveProps(nextProps){
@@ -50,11 +60,13 @@ class ToDoList extends Component {
                 </tr>
                 </thead>
                 <tbody>
+                <ConfirmationPopup showPopup={toDoState.showPopup} message={toDoState.message} handleOk={this.handleDeleteOk.bind(this)} handleCancel={this.handleDeleteCancel.bind(this)} popupParams={toDoState.popupParams}></ConfirmationPopup>
                 {toDoState.tasks ? toDoState.tasks.map((row, i)=> <Task key={row.id} task={row}
                                                                         handleEdit={this.handleEditClick.bind(this)}
                                                                         handleRemove={this.handleRemoveClick.bind(this)}/>) : ""}
                 </tbody>
             </Table>
+
         );
     }
 }

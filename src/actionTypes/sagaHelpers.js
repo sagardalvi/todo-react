@@ -15,3 +15,6 @@ export const UPDATE_TASK_RESPONSE = 'sagahelpers/TASK/update/response';
 
 export const GET_TASK_RESPONSE = 'sagahelpers/TASK/get/response';
 export const CREATE_TASK_RESPONSE = 'sagahelpers/TASK/create/response';
+
+export const CONFIRMATION_POPUP = 'sagahelpers/confirm/popup';
+export const CONFIRMATION_POPUP_CLOSE = 'sagahelpers/confirm/popup/close';

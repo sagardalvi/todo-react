@@ -53,3 +53,11 @@ export function getUpdateTaskResponse(resp) {
     return {type: actionTypes.UPDATE_TASK_RESPONSE, resp};
 }
 
+export function confirmationPopup(message, params) {
+    var popup = {message, params};
+    return {type: actionTypes.CONFIRMATION_POPUP, popup};
+}
+export function confirmationPopupClose() {
+    return {type: actionTypes.CONFIRMATION_POPUP_CLOSE};
+}
+
